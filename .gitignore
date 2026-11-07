@@ -1,0 +1,22 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+coverage/
+.playwright/
+test-results/
+playwright-report/
+
+# Local IDE/OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

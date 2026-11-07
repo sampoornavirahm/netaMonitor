@@ -1,0 +1,28 @@
+phase,title,dependencies,goal
+PH-00,"Product definition, governance and decision baseline",None,"Freeze the product contract before software implementation: scope, user journeys, trust model, data policy, score definitions, MVP boundaries and decision records."
+PH-01,"Repository, architecture and delivery foundation",00,"Create a portable monorepo, local development environment, CI checks, architecture boundaries, API conventions, migrations and durable project memory."
+PH-02,"Design system, responsive shell and initial PWA shell","00, 01","Establish the visual language, accessible component library, navigation shell and installable PWA foundation."
+PH-03,"Registration, authentication and account lifecycle","01, 02","Implement secure registration, sign-in, session management and account lifecycle using replaceable authentication adapters."
+PH-04,"RBAC, Admin roles, SuperAdmin and tamper-evident audit","01, 03","Enforce least-privilege permissions, separate Admin workspaces, privileged SuperAdmin controls, guarded support impersonation and auditability."
+PH-05,Identity and constituency verification workflow,"03, 04, 06","Establish separate contact, identity and constituency-eligibility states while minimising and protecting personal data."
+PH-06,"Geographic hierarchy, constituencies and election calendar","01, 02",Model state/district/local-body/ward/assembly/parliament constituencies and election events with effective dates and historical boundaries.
+PH-07,"People, elected offices, candidacies, terms and party history",06,"Create a person-centred directory that distinguishes a person, candidacy, election result, elected term, office and party membership over time."
+PH-08,"Admin CMS, source registry, media and publishing workflow","04, 06, 07",Give authorised editors a safe CMS for creating and publishing sourced public records with editorial review and version history.
+PH-09,"Promise tracker, milestones and responsibility attribution","07, 08","Represent exact public commitments, their original context, deadlines, measurable criteria, milestones and the authority actually responsible."
+PH-10,"Evidence review, adjudication, corrections, reply and appeals","08, 09","Build a defensible editorial process for evidence, promise-status decisions, corrections and public right of reply."
+PH-11,"Schemes, public projects and infrastructure tracking","06, 07, 08, 09, 10","Track public schemes, projects, funding, agencies, milestones and documented involvement without misattributing outcomes."
+PH-12,"Financial disclosures, assets, liabilities and business interests","07, 08, 10","Publish dated, sourced public disclosures while avoiding unsupported claims of independently verified net worth."
+PH-13,"Party affiliations, organisations, movements, protests and social accounts","07, 08, 10",Represent time-bounded relationships and publicly documented activity without converting association into an allegation.
+PH-14,"Citizen submissions, comments and community moderation","03, 04, 08, 10","Allow the public to submit information and discuss records with strong moderation, privacy and anti-abuse controls."
+PH-15,Verified citizen voting and privacy-preserving ballot service,"05, 09, 10, 14",Collect one active eligible evaluation per verified person per promise while separating voter identity from public results.
+PH-16,"Scoring engine, citizen assessment and leaderboards","09, 10, 15","Calculate reproducible, explainable evidence-based and citizen-assessment measures, with fair cohort comparisons and no admin score override."
+PH-17,"Public discovery, profile experience and side-by-side comparison","07, 09, 11, 12, 13, 15, 16",Bring the data into a coherent discovery and profile experience that answers citizen questions quickly.
+PH-18,"Gamification, achievements and civic contribution reputation","03, 14, 15, 17","Reward useful civic contributions without rewarding political opinions, volume spam or partisan activity."
+PH-19,"Following, notification preferences and push/email notifications","03, 17","Let users follow representatives/promises and receive relevant, consent-based updates through replaceable delivery providers."
+PH-20,"English, Hindi and Marathi localisation","02, 03",Support multilingual interface and sourced multilingual content without corrupting original statements.
+PH-21,Constituency maps and historical ward boundaries,"06, 07",Visualise current and historical geography with clear effective dates and accessible non-map alternatives.
+PH-22,"Official data ingestion, imports and reconciliation","06, 07, 08, 09, 10","Import public data safely with provenance, repeatability, review and reconciliation; never silently scrape or overwrite authoritative records."
+PH-23,"Transparency centre, methodology, funding disclosure, OpenAPI and open data","09, 10, 11, 12, 13, 16, 22","Make platform methods, governance, funding and public datasets inspectable without exposing private or unsafe data."
+PH-24,Advanced PWA offline and low-bandwidth experience,"02, 17, 19, 20","Improve resilience on unreliable networks while ensuring private, stale or action-critical data is never mishandled."
+PH-25,"Admin analytics, anti-manipulation and election-period safeguards","04, 05, 14, 15, 16, 19, 22, 23",Provide operational insight and abuse detection while applying jurisdiction-aware controls for election-period risk.
+PH-26,"Production hardening, security audit, performance and launch",All prior phases accepted,"Prove that the product is safe, resilient, accessible, supportable and operationally ready for a controlled pilot."

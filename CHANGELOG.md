@@ -4,10 +4,13 @@ All notable project changes are recorded here. This file tracks repository/speci
 
 ## [Unreleased]
 ### Added
-- PH-00 UI Design deliverables (documentation only) under `docs/phases/PH-00/`: personas, journeys, information architecture, service blueprint, low-fidelity flows, screen and component inventory, accessibility and responsive principles, and UI design handoff. Branch `ph00/ui-design`, pending human review.
+- PH-00 development specification pack (documentation only): product/NFR requirements, domain and logical data model with ERD, proposed architecture, RBAC, scoring, verification, privacy, security, moderation, election-period safeguards, source-register template, traceability, future test catalogue and developer handoff.
+- PH-00 owner-approved UI decisions D01–D10 and an open-question register; four proposed ADRs for architecture review.
 
 ### Notes
-- No application code, CSS, schemas or migrations were added. PH-00 is not accepted.
+- The eight UI Design source deliverables were merged into `main` by PR #1. Their handoff's pending-review statement is historical; D01–D10 are now explicitly owner-approved in DEC-001.
+- Specification reconciliation records the eight evaluation eligibility outcomes (including the election-period pause) and keeps UI sources in their phase folder rather than duplicating them at `docs/` root.
+- No application code, package manifests, executable tests, API endpoints, database migrations, deployment configuration or real personal/political data were added. Independent QA and human PH-00 acceptance remain outstanding.
 
 ## [0.1.0] — 2026-11-08
 ### Added

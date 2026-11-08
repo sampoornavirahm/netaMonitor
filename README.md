@@ -15,6 +15,7 @@ The Git repository is the source of truth. LLM conversations, memory and generat
 - `docs/phases/` — phase briefs, deliverables, QA reports, handoffs and acceptance records.
 - `docs/adr/` — Architecture Decision Records (why technical/architectural choices were made).
 - `docs/decisions/` — Product, policy and governance decisions (why the product behaves as it does).
+- `docs/` — PH-00 product, non-functional, domain, data, architecture, privacy/security, policy, traceability and future test specifications. See [docs/README.md](docs/README.md).
 
 ## Initial setup
 
@@ -29,6 +30,8 @@ The Git repository is the source of truth. LLM conversations, memory and generat
 Each phase has three prompts: UI Design, Development + Unit/Integration Testing, and Independent E2E/QA. For PH-00 specifically, there is no application to run: UI produces product/UX specifications, Development produces product and technical specification documents only, and QA independently audits those documents and creates the future executable test catalogue. No production code, database migrations, API implementation or browser E2E execution belongs in PH-00.
 
 For implementation phases after PH-00, the E2E agent tests the running application against approved requirements. A phase is not accepted merely because a coding agent says it is complete. The phase owner records acceptance after reviewing QA results and all blocking defects.
+
+PH-00 development is documentation-only. Its accepted UI decisions and unresolved questions are recorded separately in `docs/decisions/`; proposed architecture records are not implementation approval. The eight UI source documents remain under `docs/phases/PH-00/` and are referenced rather than duplicated.
 
 ## Branch workflow
 

@@ -15,3 +15,15 @@ This folder holds the phase brief, approved UI/product deliverables, development
 | `ui-design-handoff.md` | Handoff, decisions, open questions, self-review |
 
 Other files in this folder (`PHASE_BRIEF.md`, `acceptance-record.md`) are owned by the brief and the human phase owner.
+
+## Development specification (Agent 2)
+
+The canonical technical/product specifications are maintained in `docs/`, not duplicated here:
+
+- Product, non-functional, domain glossary/model and logical data model: `docs/PRODUCT_REQUIREMENTS.md`, `docs/NON_FUNCTIONAL_REQUIREMENTS.md`, `docs/DOMAIN_GLOSSARY.md`, `docs/DOMAIN_MODEL.md`, `docs/DATA_MODEL.md`.
+- Architecture and controls: `docs/SYSTEM_ARCHITECTURE.md`, `docs/RBAC_MATRIX.md`, `docs/SCORING_METHODOLOGY.md`, `docs/VERIFICATION_POLICY.md`, `docs/PRIVACY_POLICY_REQUIREMENTS.md`, `docs/SECURITY_MODEL.md`, `docs/MODERATION_POLICY.md`, `docs/ELECTION_PERIOD_POLICY.md`.
+- Assurance/source governance: `docs/DATA_SOURCE_REGISTER.md`, `docs/REQUIREMENTS_TRACEABILITY.md`, `docs/TEST_STRATEGY.md`.
+- Canonical decisions: `docs/adr/` and `docs/decisions/`.
+- Agent 2 report: `developer-handoff.md`.
+
+The existing UI documents remain the source artifacts and are linked from the root specifications/traceability. Do not copy them to root-level duplicates. `qa-report.md` belongs to independent QA; `acceptance-record.md` remains human-owned.

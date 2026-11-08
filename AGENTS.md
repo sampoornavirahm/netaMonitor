@@ -1,7 +1,7 @@
 # AGENTS.md — NetaMonitor
 
 ## 1. Source of truth and mandatory reading
-The Git repository is authoritative. Never rely on chat history or model memory. Before work, read: `README.md`, `IMPLEMENTATION_HANDBOOK.md`, `phase-register.csv`, this file, the assigned `prompts/PH-XX/` prompt, the current `docs/phases/PH-XX/` brief and all relevant accepted specifications, ADRs and decisions. If a referenced file is missing, identify whether it is expected to be created in this phase; do not silently invent it.
+The Git repository is authoritative. Never rely on chat history or model memory. Before work, read: `README.md`, `IMPLEMENTATION_HANDBOOK.md`, `phase-register.csv`, this file, the assigned `prompts/PH-XX/` prompt, the current `docs/phases/PH-XX/` brief and all relevant accepted specifications, ADRs and decisions. For PH-00 Development, also read all eight UI source deliverables and `docs/phases/PH-00/README.md`. If a referenced file is missing, identify whether it is expected to be created in this phase; do not silently invent it.
 
 ## 2. Project identity
 - Product name: **NetaMonitor**.
@@ -51,6 +51,7 @@ PH-00 is documentation and specification work only. Do not scaffold the runtime 
 
 ## 7. Required documentation updates
 Update the relevant phase folder, `AGENTS.md`, `CHANGELOG.md`, and impacted product/architecture/domain/schema/API/security/design/test documents and ADRs/decisions. A handoff must include: summary, changed files, decisions, open questions, tests/checks and exact outcomes, defects, risks, next steps and phase readiness.
+Decision status is recorded in canonical files under `docs/adr/` and `docs/decisions/`; only explicitly owner-approved items may be marked `ACCEPTED`. For PH-00, keep UI source documents in `docs/phases/PH-00/` and link to them rather than creating duplicate root copies. The QA report is independent; the human owner alone records phase acceptance.
 
 ## 8. Branching rules
 - `main` is the only accepted source of truth.

@@ -21,7 +21,7 @@ Options considered: (1) accept D01–D10 as proposed, with the owner's D05 condi
 | D02 | Location selection is optional and is clearly distinct from verified constituency status. |
 | D03 | Public browsing does not require login. |
 | D04 | Explain why an action or information is unavailable and, where safe, the next step. |
-| D05 | An evaluation receipt may show only the user's own choice, only to the signed-in user; it has no shareable receipt or link. It must not expose another person's vote or become coercive proof of someone's vote. |
+| D05 | A private, non-shareable confirmation may show only the authenticated voter's own submitted choice. It must not expose another person's vote or serve as coercive proof. This confirmation is distinct from public results/aggregates, which are governed separately by Q01; no exportable, shareable or third-party-verifiable vote receipt is permitted. |
 | D06 | Assisted/in-person verification should have equal standing to supported digital verification. |
 | D07 | A politician's reply does not replace the original record; factual disputes use the correction process. |
 | D08 | Admin navigation may be hidden, but server-side authorization is mandatory. Unauthorized and nonexistent protected areas should not reveal sensitive distinctions. |
@@ -32,7 +32,7 @@ Options considered: (1) accept D01–D10 as proposed, with the owner's D05 condi
 
 ## Consequences
 
-All requirements, data projections, workflows and later acceptance tests must preserve these decisions. A technical conflict is documented and returned to the owner; an agent must not weaken/reinterpret an accepted item. D05 requires privacy and anti-coercion review; a private screen receipt still cannot guarantee that a user will not photograph a screen, and the product must not claim otherwise.
+All requirements, data projections, workflows and later acceptance tests must preserve these decisions. A technical conflict is documented and returned to the owner; an agent must not weaken/reinterpret an accepted item. D05 distinguishes a private voter-only confirmation from separately governed public aggregate results. No confirmation may be exported, shared or verified by a third party. A private screen cannot guarantee that a user will not photograph it, and the product must not claim otherwise. Q01 still governs any public aggregate publication.
 
 User impact: public access stays open; information and restrictions must be understandable; verification preserves a non-digital route; and private evaluations are not made shareable. These decisions do not by themselves authorize data collection or determine eligibility, legal policy or aggregation thresholds.
 

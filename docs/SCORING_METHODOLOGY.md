@@ -39,7 +39,7 @@ For a promise, let `F`, `P`, and `N` be active eligible counts for fulfilled, pa
 
 `Citizen-assessed fulfilment (%) = 100 × (F + 0.5 × P) / (F + P + N)`
 
-No percentage is calculated if the denominator is zero. **No aggregate, count, percentage, cohort, window, result receipt or suppression threshold may be published until Q01 is decided after privacy/re-identification review.** The handbook's planning threshold of 20 is not an approved policy and is not adopted here.
+No percentage is calculated if the denominator is zero. The authenticated voter may receive a private, non-shareable, non-exportable confirmation showing only their own successfully submitted choice; this is not a public result, receipt for third-party verification or coercive proof. **Public results, aggregates, counts, percentages, cohorts, windows and suppression thresholds may not be published until Q01 is decided after privacy/re-identification review.** The handbook's planning threshold of 20 is not an approved policy and is not adopted here. Q01 governs public disclosure, not the private voter-only confirmation.
 
 Changes must replace the active choice under an explicit, audited revision policy; aggregate outputs use the active choice per eligible person/promise, not revision event counts. Do not expose per-user vote history, receipt sharing, demographic cross-tabs or small cohorts. Even with aggregation, linkage, differencing, coercion and inference risks remain; thresholding alone does not guarantee anonymity.
 

@@ -28,8 +28,8 @@
 | FR-011 Accessible verification and appeals | UX-095–100, 520–522 | VerificationCase/Evidence | Least privilege, reviewer separation; TH-07 | AT-011 | PH-05 |
 | FR-012 Eligibility enforcement | UX-105, 111, 265–266 | EligibilityRecord, Promise | Server-only; no staff vote; TH-02/05 | AT-012 | PH-05/15 |
 | FR-013 One active evaluation/revision | UX-107, 108; FLOW-04 | Evaluation, Revision, opaque subject | Idempotency; TH-05 | AT-013 | PH-15 |
-| FR-014 Confidential non-coercive receipt | UX-098, 108, 203, 267 | EvaluationSubject, Evaluation | No choice visibility/share link; TH-06 | AT-014 | PH-15 |
-| FR-015 Aggregate suppression | UX-109, 184, 403 | AggregateSnapshot | Q01 open; TH-06 | AT-015 | PH-15/16 |
+| FR-014 Confidential non-coercive receipt | UX-098, 108, 203, 267 | EvaluationSubject, Evaluation, private voter confirmation | Only authenticated voter sees own choice; non-shareable/non-exportable; TH-06 | AT-014 | PH-15 |
+| FR-015 Public aggregate suppression | UX-109, 184, 403 | AggregateSnapshot | Distinct from private confirmation; Q01 open; TH-06 | AT-015 | PH-15/16 |
 | FR-016 Separate measures | UX-165, 189, 440; FLOW-03 | Adjudication, Evaluation, Coverage, ScoreSnapshot | No admin override; TH-11 | AT-016 | PH-16/17 |
 | FR-017 Like-for-like comparisons | UX-159–160, 535 | ScoreSnapshot/cohort | Explain non-comparability | AT-017 | PH-16/17 |
 | FR-018 Financial/affiliation labels | UX-187–188 | Disclosure, DisclosureItem, Affiliation | Sensitive editorial review; TH-11 | AT-018 | PH-12/13 |

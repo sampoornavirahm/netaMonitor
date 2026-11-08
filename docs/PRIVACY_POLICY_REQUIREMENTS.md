@@ -17,8 +17,10 @@ For each processing purpose, provide plain-language notice covering controller/o
 | Account/contact | Provider subject, contact confirmation, recovery and preferences | Personal | Account holder and minimum support/auth service |
 | Identity/constituency material | Evidence, address/identity attributes, reviewer notes | Restricted | Assigned verification role/service only |
 | Eligibility assertion | Tier, constituency reference, validity, decision | Restricted | Eligibility service; public sees no evidence or detailed denial reason |
-| Citizen evaluation | Choice, revision and evaluation time | Highly restricted | Evaluation boundary; no staff individual-choice view |
+| Citizen evaluation | Choice, revision and evaluation time | Highly restricted | Vote-choice boundary; no staff individual-choice view |
 | Identity-choice mapping | Opaque eligibility subject-to-account mapping | Highest restriction | Narrow separate service/key boundary |
+| Private voter confirmation | Confirmation available only to the authenticated voter, showing only their own submitted choice | Highly restricted / private | Non-shareable and non-exportable; not a public result, third-party receipt or proof |
+| Public results/aggregates | Counts, percentages, distributions and cohort statistics | Derived; may remain sensitive | Separate disclosure product; public only after Q01 and re-identification review |
 | Submission/moderation | Contact details, uploads, reports, abuse signals | Personal/restricted | Assigned moderation/editorial workflow |
 | Security/audit/telemetry | Session, admin events, IP/abuse indicators, correlation data | Restricted | Operational/security roles with purpose and expiry |
 | Aggregate/derived | Counts, scores, analytics | Derived; may remain sensitive | Public only after Q01 and re-identification review |
@@ -31,9 +33,9 @@ Threat model is a starting point, not a completed DPIA or legal assessment.
 
 | Threat / affected data | Example abuse or failure | Proposed control | Residual risk / owner |
 |---|---|---|---|
-| Identity-to-evaluation linkage | Insider or query joins account, constituency evidence and choice | Separate bounded contexts/stores, opaque subject, least privilege, no user-level export, access alerts and design review | Correlation by timing/metadata; security/privacy owner |
+| Identity-to-evaluation linkage | Insider or query joins account, constituency evidence and choice | HIGH-PRIORITY gate: resolve physical separation or an equivalently strong isolation boundary before voting implementation; document data flows and permitted cross-boundary operations; obtain independent review | Correlation, collusion and provider compromise remain; SEC-01/ADR-002 |
 | Small-cohort disclosure | Public result reveals likely choice in a small area | Q01 suppression, no cross-tabs, minimum query controls, privacy review and aggregate-only API | Differencing, external knowledge, threshold insufficiency; Q01 owner |
-| Coercive proof | User is pressured to show a receipt/screenshot | Non-shareable private receipt, no public lookup/link, avoid signed vote attestations or exportable receipts | User may still photograph screen; UX/security owner |
+| Coercive proof | User is pressured to demonstrate a submitted choice | Distinguish the private authenticated-voter confirmation (own submitted choice only, non-shareable, non-exportable) from public aggregates. No public lookup, third-party verification, signed attestation or exportable/shareable receipt | A person may still photograph/show their own screen; never claim coercion is impossible; UX/security owner |
 | Raw verification exposure | Misconfigured storage, support access, backup or logs reveal documents | Avoid raw retention, segregated encrypted storage, scoped short-lived access, redaction, audit, backup expiry | Insider/provider compromise; Q03/legal/security |
 | Purpose creep | Verification/account data reused for analytics/targeting | Purpose tags, separate permissions, no political profiling/advertising, review of new use | Future organizational pressure; governance owner |
 | Account recovery takeover | Attacker resets account and changes evaluation | Risk-based recovery, re-authentication, notifications and controlled change policy | SIM/email compromise; PH-03/security |
@@ -48,7 +50,8 @@ Threat model is a starting point, not a completed DPIA or legal assessment.
 
 - Maintain a data-flow inventory with purpose, classification, source, recipients, storage, region, access roles, retention and deletion state.
 - Minimize collection; do not scrape voter rolls or process Aadhaar biometric/eKYC.
-- Separate identity/eligibility from evaluation choice; public endpoints return only reviewed aggregates.
+- Before voting implementation, resolve and independently review the HIGH-PRIORITY physical-separation or equivalently strong isolation decision between identity mapping and vote-choice records.
+- Distinguish the private, non-shareable/non-exportable confirmation showing only the authenticated voter's own submitted choice from public results/aggregates. Public outputs never expose individual choices and remain Q01-gated.
 - Encrypt sensitive data in transit and at rest; restrict key access, rotate keys and keep secrets outside source/browser. Exact cryptographic implementation is PH-01.
 - Exclude identity evidence, vote choices, credentials and unnecessary PII from logs, analytics, notifications, exports and caches.
 - Gate new use, disclosure, third-party access and public dataset fields through privacy/security review.
@@ -58,7 +61,7 @@ Threat model is a starting point, not a completed DPIA or legal assessment.
 
 ## 5. Privacy review gates
 
-Before PH-05 collection: Q03 legal basis, privacy notice, route/vendor, retention, deletion and breach owner. Before PH-15: Q01 threshold, query/differencing risk, ballot revision/audit trade-off, re-identification and coercion review. Before PH-22 imports: licensing, provenance and minimization. Before public API/open data: field-by-field release and linkage review. Before production: incident plan, subprocessor/region review, access audit, restore/expiry test and counsel approval.
+Before PH-05 collection: Q03 legal basis, privacy notice, route/vendor, retention, deletion and breach owner. Before any PH-15 voting implementation: resolve SEC-01 and independently review the identity-mapping/choice isolation boundary. Before public results: Q01 threshold, query/differencing risk, evaluation revision/audit trade-off, re-identification and coercion review. Before PH-22 imports: licensing, provenance and minimization. Before public API/open data: field-by-field release and linkage review. Before production: incident plan, subprocessor/region review, access audit, restore/expiry test and counsel approval.
 
 ## 6. Open issues
 

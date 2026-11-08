@@ -64,7 +64,7 @@ erDiagram
   IMPORT_JOB }o--|| SOURCE : imports_from
 ```
 
-`PUBLIC_RECORD`, `EVALUATION_SUBJECT`, and links crossing restricted contexts are logical concepts, not instructions to place sensitive data in a shared table or database. The physical architecture, isolation and key custody require ADR review.
+`PUBLIC_RECORD`, `EVALUATION_SUBJECT`, and links crossing restricted contexts are logical concepts, not instructions to place sensitive data in a shared table or database. The `ACCOUNT`–`EVALUATION_SUBJECT` association exists only in the identity-mapping boundary; it is not a direct foreign key/join from the vote-choice records. Physical separation or an equivalently strong isolation boundary between voter identity mapping and vote-choice records is a HIGH-PRIORITY security decision that must be resolved and independently reviewed before any voting implementation (SEC-01/ADR-002). The ERD does not imply that a shared database with logical labels is approved.
 
 ## 3. Entity/data dictionary draft
 
@@ -93,9 +93,10 @@ erDiagram
 | VerificationCase | Account reference, requested tier/constituency, state, reviewer, dates, reason codes | RESTRICTED | Reviewer separation, appeal, expiry; retention undecided (Q03). |
 | VerificationEvidence | Evidence type/reference, minimal extracted facts, storage pointer, access log | RESTRICTED | Avoid retaining raw evidence if possible; encryption, deletion, backup expiry decision required. |
 | EligibilityRecord | Account reference, constituency, basis/method category, valid interval, decision | RESTRICTED | Only minimum assertion needed for eligibility; no public residence exposure. |
-| EvaluationSubject | Opaque subject/token reference; separate protected account mapping | RESTRICTED | Key custody/service boundary and deletion/revocation policy require review. |
-| Evaluation / EvaluationRevision | Promise, opaque subject, choice, time, active marker, revision reference | RESTRICTED | No identity in choice context; at most one active choice proposed; auditability/privacy tension reviewed. |
-| AggregateSnapshot | Promise/cohort/window, counts, suppression-policy version, computation version | DERIVED | No publication until Q01; assess differencing and small cells. |
+| EvaluationSubject | Opaque subject/token reference; account-to-subject mapping held only in the separate identity-mapping boundary | RESTRICTED | Physical separation or equivalently strong isolation is a high-priority pre-voting decision; key custody and deletion/revocation policy require review. |
+| Evaluation / EvaluationRevision | Promise, opaque subject, choice, time, active marker, revision reference; no direct account identifier | RESTRICTED | Choice records cannot resolve voter identity; at most one active choice proposed; isolation and auditability/privacy tension must be reviewed before voting implementation. |
+| PrivateEvaluationConfirmation | Authenticated voter session reference and that voter's own submitted choice, presented only to that voter | RESTRICTED / private | Non-shareable and non-exportable; not public output, third-party proof or a result receipt. Never contains another voter's choice. |
+| AggregateSnapshot | Promise/cohort/window, counts, suppression-policy version, computation version | DERIVED | Public results/aggregates are distinct from private confirmations; no publication until Q01; assess differencing and small cells. |
 | PublicRecord / RecordVersion | Record type/ID, version, publication status, content hash, supersedes link | PUBLIC/INTERNAL | Append-only public history and correction notices; retention policy required. |
 | ReviewCase / ReviewDecision | Subject/version, queue, role, reason, reviewer, outcome, timestamps | INTERNAL/PERSONAL | Least-privilege; decision appeal and separation. |
 | CorrectionRequest / RightOfReply / Appeal | Record and decision refs, submitter, evidence, status, response and outcome | PERSONAL/INTERNAL; published outcome PUBLIC | Submitter identity protected; public response only after review. |
@@ -115,9 +116,10 @@ erDiagram
 | Account/contact | User/provider auth flow | Account holder and minimal auth/support roles | None | Q03/legal; deletion, recovery and legal hold |
 | Raw identity/constituency evidence | Verification process only if necessary | Designated verification role/service; audited | Never | Q03 must define immediate/limited deletion and backup expiry |
 | Eligibility assertion | Approved review | Eligibility service and limited verifier | Never expose evidence or exact reason publicly | Expiry, revocation and minimised audit decision per Q03 |
-| Vote subject mapping | Eligibility service | Narrow privacy boundary/service only; no routine admin access | Never | Q01/Q03, revocation, key rotation and privacy review |
-| Vote choice/revision | Eligible evaluation flow | Separate restricted service; no staff individual-choice view | Aggregates only if Q01 approved | Q03; audit and deletion balance unresolved |
-| Aggregate/scores | Deterministic job from approved inputs | Public only after review/suppression; internal controls | Method-versioned disclosure-safe output | Recompute/version, prevent differencing |
+| Vote subject mapping | Eligibility service | Identity-mapping boundary; no routine admin access | Never | SEC-01 boundary review before voting; Q03 retention, revocation, key rotation |
+| Vote choice/revision | Eligible evaluation flow | Vote-choice boundary; no staff individual-choice view | No individual output | SEC-01 boundary review before voting; Q03 audit/deletion balance |
+| Private voter confirmation | Successful authenticated submission | Only the voter in an authenticated, non-shareable/non-exportable view | Never public or third-party verifiable | D05; session/shared-device handling and Q03 |
+| Public results/aggregates | Deterministic job from approved inputs | Public only after Q01 review/suppression; internal controls | Disclosure-safe aggregate only; never an individual receipt | Recompute/version; prevent differencing |
 | Admin/security/audit | System and privileged actions | Restricted operators/auditors | No raw access data publicly | Retention and external checkpoint decision |
 
 ## 5. Constraints for future physical design
@@ -127,6 +129,8 @@ erDiagram
 - Prevent a user from approving their own verification/content item; enforce at the service boundary and test database constraints where appropriate.
 - Use explicit uniqueness, foreign-key and interval-overlap rules only after office/constituency temporal semantics are resolved.
 - Public read models must be allowlisted projections, never broad serialization of restricted entities.
+- No voting implementation may begin until SEC-01 resolves physical separation or an equivalently strong isolation boundary and independent security/privacy reviewers have reviewed the design and denial paths.
+- A private voter confirmation contains only the authenticated voter's own submitted choice and is non-shareable/non-exportable. Public results are separately governed aggregates; no vote receipt is publicly published or verifiable by a third party.
 - Object metadata must declare classification, owner, purpose, encryption, access policy, malware review where relevant and deletion state.
 - Do not use database row-level security or a provider feature as the sole authorization boundary.
 - A production schema/migration is outside PH-00.

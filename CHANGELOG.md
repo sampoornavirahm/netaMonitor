@@ -10,6 +10,7 @@ All notable project changes are recorded here. This file tracks repository/speci
 ### Notes
 - The eight UI Design source deliverables were merged into `main` by PR #1. Their handoff's pending-review statement is historical; D01–D10 are now explicitly owner-approved in DEC-001.
 - Specification reconciliation records the eight evaluation eligibility outcomes (including the election-period pause) and keeps UI sources in their phase folder rather than duplicating them at `docs/` root.
+- PH-00 voting privacy clarification: SEC-01 is a HIGH-PRIORITY, unresolved security decision requiring physical separation or an equivalently strong, independently reviewed isolation boundary before any voting implementation. Private voter-only confirmations are distinguished from Q01-governed public results/aggregates; confirmations are non-shareable/non-exportable and cannot expose or prove another person's vote. No ADR or open/legal decision was newly approved.
 - No application code, package manifests, executable tests, API endpoints, database migrations, deployment configuration or real personal/political data were added. Independent QA and human PH-00 acceptance remain outstanding.
 
 ## [0.1.0] — 2026-11-08

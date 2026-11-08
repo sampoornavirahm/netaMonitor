@@ -38,6 +38,14 @@ The following are not resolved merely because a related UX decision was accepted
 
 Each needs a named owner and target phase before implementation. Do not infer acceptance from the initial handbook or a proposed ADR.
 
+### High-priority security decision
+
+| ID | Decision / context | Why it matters / risk if unresolved | Required resolution and review | Owner / required reviewer | Target / status |
+|---|---|---|---|---|---|
+| SEC-01 | Choose physical separation or an equivalently strong isolation boundary between voter identity mapping and vote-choice records. Define the boundary, permitted cross-boundary operations, access/key controls, failure behavior and evidence of effectiveness. | A join, insider path, compromised service or misconfigured query could link sensitive political opinion to a voter, undermine confidentiality and enable coercion or re-identification. Logical separation by convention alone may be insufficient. | Document threat model and data flows; justify physical separation or demonstrate an equivalently strong independently enforced boundary; obtain independent security and privacy review; verify denial paths. This must be resolved before any voting implementation. | Human project owner; independent security reviewer and privacy reviewer; qualified counsel where applicable | Before any voting implementation (PH-15); **HIGH PRIORITY / BLOCKED** |
+
+This is a new unresolved security gate, not an accepted decision. ADR-002 remains **PROPOSED** until the owner records a decision. Its clarification does not close Q01, Q03, or any other open/legal-review gate.
+
 ## Change record
 
 This register clarifies the UI handoff status: the eight source documents were merged into `main` by PR #1 and the product owner has now explicitly approved D01–D10. The handoff's “pending review/not merged” line is a historical statement. It is not edited in-place.

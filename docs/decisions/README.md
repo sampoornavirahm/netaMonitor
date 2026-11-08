@@ -9,4 +9,4 @@ Each record must include: title, date, status, decision owner, context, options,
 | Record | Purpose | Status |
 |---|---|---|
 | [DEC-001](./DEC-001-ui-experience-baseline.md) | Owner-approved UI decisions D01–D10 | ACCEPTED |
-| [DEC-002](./DEC-002-open-product-and-policy-questions.md) | UI questions Q01–Q13 and additional open specification decisions | OPEN / BLOCKED items identified |
+| [DEC-002](./DEC-002-open-product-and-policy-questions.md) | UI questions Q01–Q13, additional open specification decisions, and high-priority blocked security gate SEC-01 | OPEN / BLOCKED items identified |

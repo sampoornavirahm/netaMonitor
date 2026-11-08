@@ -46,7 +46,7 @@ flowchart LR
   Domain --> Providers
 ```
 
-Components are logical security/trust boundaries, not a commitment to microservices or separate physical databases. The choice-record/identity mapping and raw verification evidence require a separate threat-informed isolation decision before implementation. Apply least privilege even if PH-01 selects a modular monolith.
+Components are logical security/trust boundaries, not a commitment to microservices or separate physical databases. Before any voting implementation, the HIGH-PRIORITY SEC-01 decision must require physical separation, or establish an equivalently strong isolation boundary, between voter identity mapping and vote-choice records. The boundary, permitted cross-boundary operations, threat model, denial paths and independent security/privacy review must be complete first. The diagram does not approve co-location or logical separation alone. Raw verification evidence also requires a separate threat-informed isolation decision. Apply least privilege even if PH-01 selects a modular monolith.
 
 ## 3. Trust zones and request flow
 
@@ -59,7 +59,7 @@ Components are logical security/trust boundaries, not a commitment to microservi
 7. **External adapters:** authentication, email/push, object storage, maps/geocoding, source/import, monitoring and hosting. Each has failure, data-processing and exit conditions.
 8. **Operational/audit zone:** append-only application events, restricted access, integrity verification and independent checkpoint option.
 
-Example evaluation flow: client obtains a session; API authenticates; eligibility service checks account/constituency/promise/staff/pause state; evaluation boundary accepts one explicit action with idempotency and records the opaque subject/choice in separated contexts; only a suppression-reviewed aggregate projection can be returned. Exact disclosure and revision rules are blocked on Q01 and Q03.
+Example evaluation flow: client obtains a session; API authenticates; eligibility service checks account/constituency/promise/staff/pause state; evaluation boundary accepts one explicit action with idempotency and records the opaque subject/choice across the SEC-01-reviewed isolation boundary. After successful submission, the authenticated voter may see a private, non-shareable and non-exportable confirmation showing only their own submitted choice; this is not a public result, third-party-verifiable receipt or coercive proof. Public results/aggregates are separate disclosure outputs and remain blocked on Q01. Exact collection, revision and retention rules remain subject to Q03.
 
 ## 4. Proposed technology baseline and alternatives
 
@@ -83,6 +83,7 @@ These are proposals from `AGENTS.md`/handbook, not vendor selection or procureme
 - API operations authenticate and authorize server-side; validate requests and responses; enforce idempotency and abuse limits for sensitive actions.
 - Use versioned, explicit contracts; do not make a UI capability label (including `ballot.*`) an endpoint specification.
 - Public APIs allowlist fields, aggregate responses and rate limits; do not expose records by generic ORM serialization.
+- Never return an individual vote receipt through public APIs or provide a shareable/exportable/third-party-verifiable receipt. Private confirmation and public aggregate output are distinct surfaces with separate authorization and disclosure rules.
 - Domain events/outbox may be considered for reliable asynchronous notifications/imports, but implementation pattern awaits PH-01.
 - Data imports are staged, hashed, mapped and reviewed; never silently overwrite temporal records.
 - Offline caches include only allowlisted public content and show timestamp; never cache identity, admin, private account or individual evaluation data.

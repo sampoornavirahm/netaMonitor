@@ -4,6 +4,8 @@
 **Branch:** `ph00/development`
 **Base:** `79478ea` (merge of UI Design PR #1 into `main`)
 **Status:** Specification pack drafted; awaiting independent QA and human review. PH-00 is **not accepted**.
+**Development commit:** `9257af7`
+**Pull request:** #2 — `docs(ph00): add product and technical specification pack` (open; not merged)
 
 ## 1. Summary
 
@@ -109,14 +111,12 @@ No code defects apply. The unresolved decisions above are specification blockers
 
 Next:
 
-1. Complete static documentation/link/ID/decision-status review and inspect the full Git diff.
-2. Human reviews the specification and proposed ADRs/DEC-002 entries; only the human may approve/supersede decisions.
-3. Commit and push this work on `ph00/development`; open a PR to `main` for human review, without merging.
-4. Independent QA works from the updated accepted base and produces `qa-report.md`.
-5. Human phase owner reviews QA and records phase acceptance. Do not start dependent phases before acceptance.
+1. Human reviews PR #2, the specification pack and proposed ADRs/open-decision entries; only the human may approve/supersede decisions or merge.
+2. After human merge, the independent QA agent branches from the updated accepted `main`, audits the specifications and produces `qa-report.md`.
+3. Human phase owner reviews QA and records phase acceptance. Do not start dependent phases before acceptance.
 
 ## 8. Phase readiness
 
-**Development specification:** ready for independent documentation QA after static checks are recorded.
+**Development specification:** submitted in PR #2 and ready for human review; independent documentation QA follows human merge.
 **PH-00 gate:** not ready for acceptance. QA, human review and specified open decisions remain outstanding.
 **Implementation readiness:** PH-00 does not authorize implementation; follow phase gates and decision owners.
